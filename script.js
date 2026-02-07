@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 "Head of Marketing",
                 "Digital Transformation",
                 "PPC Expert",
-                "SEO Specialist"
+                "SEO Specialist",
+                "Web Designer"
             ],
             typeSpeed: 50,
             backSpeed: 30,
