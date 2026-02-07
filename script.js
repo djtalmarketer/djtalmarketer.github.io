@@ -52,7 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-  
+
+
+          // --- TYPING EFFECT ---
+    if (typeof Typed !== 'undefined') {
+        var typed = new Typed('#typed-text', {
+            strings: [
+                "Head of Marketing",
+                "Digital Transformation",
+                "PPC Expert",
+                "SEO Specialist"
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            backDelay: 2000
+        });
+    }
+});
+    
+    
 
 // --- MOBILE MENU LOGIC ---
 function toggleMobileMenu() {
