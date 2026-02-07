@@ -94,3 +94,67 @@ function toggleFaq(id) {
         }
     }
 }
+
+
+// --- CAROUSEL LOGIC ---
+let currentIndex = 0;
+const track = document.getElementById('carousel-track');
+const slides = track ? track.children : [];
+const totalSlides = slides.length;
+let autoPlayInterval;
+
+function updateCarousel() {
+    if (!track) return;
+    
+    // On mobile, show 1 slide (100%). On Desktop, show 3 slides (33%).
+    // We calculate width based on the first slide's rendered width including gap
+    const slideWidth = slides[0].getBoundingClientRect().width + 24; // 24px is the gap
+    const newTransform = -(currentIndex * slideWidth);
+    
+    track.style.transform = `translateX(${newTransform}px)`;
+}
+
+function nextSlide() {
+    // Stop at the end (or loop back to 0 if you prefer infinite)
+    // Here we handle responsive: subtract visible slides to avoid empty space at end
+    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
+    
+    if (currentIndex < totalSlides - visibleSlides) {
+        currentIndex++;
+    } else {
+        currentIndex = 0; // Loop back to start
+    }
+    updateCarousel();
+    resetAutoPlay();
+}
+
+function prevSlide() {
+    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
+    
+    if (currentIndex > 0) {
+        currentIndex--;
+    } else {
+        currentIndex = totalSlides - visibleSlides; // Loop to end
+    }
+    updateCarousel();
+    resetAutoPlay();
+}
+
+function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    autoPlayInterval = setInterval(nextSlide, 3000); // 3 seconds
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    if(track) {
+        resetAutoPlay();
+        
+        // Pause on hover
+        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        track.addEventListener('mouseleave', resetAutoPlay);
+        
+        // Recalculate on resize
+        window.addEventListener('resize', updateCarousel);
+    }
+});
