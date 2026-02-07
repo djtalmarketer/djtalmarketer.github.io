@@ -96,65 +96,40 @@ function toggleFaq(id) {
 }
 
 
-// --- CAROUSEL LOGIC ---
-let currentIndex = 0;
-const track = document.getElementById('carousel-track');
-const slides = track ? track.children : [];
-const totalSlides = slides.length;
-let autoPlayInterval;
+// --- MULTI-CAROUSEL SYSTEM ---
+const carouselStates = {
+    'projects-track': { index: 0 },
+    'carousel-track': { index: 0 } // This is your Organizations track
+};
 
-function updateCarousel() {
+function moveCarousel(trackId, direction) {
+    const track = document.getElementById(trackId);
     if (!track) return;
-    
-    // On mobile, show 1 slide (100%). On Desktop, show 3 slides (33%).
-    // We calculate width based on the first slide's rendered width including gap
-    const slideWidth = slides[0].getBoundingClientRect().width + 24; // 24px is the gap
-    const newTransform = -(currentIndex * slideWidth);
-    
-    track.style.transform = `translateX(${newTransform}px)`;
-}
 
-function nextSlide() {
-    // Stop at the end (or loop back to 0 if you prefer infinite)
-    // Here we handle responsive: subtract visible slides to avoid empty space at end
+    const state = carouselStates[trackId];
+    const slides = track.children;
+    const totalSlides = slides.length;
     const visibleSlides = window.innerWidth < 768 ? 1 : 3;
-    
-    if (currentIndex < totalSlides - visibleSlides) {
-        currentIndex++;
-    } else {
-        currentIndex = 0; // Loop back to start
+
+    // Update Index
+    state.index += direction;
+
+    // Loop logic
+    if (state.index > totalSlides - visibleSlides) {
+        state.index = 0;
+    } else if (state.index < 0) {
+        state.index = totalSlides - visibleSlides;
     }
-    updateCarousel();
-    resetAutoPlay();
+
+    // Apply Transformation
+    const slideWidth = slides[0].getBoundingClientRect().width + 24; // Width + Gap
+    track.style.transform = `translateX(-${state.index * slideWidth}px)`;
 }
 
-function prevSlide() {
-    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
-    
-    if (currentIndex > 0) {
-        currentIndex--;
-    } else {
-        currentIndex = totalSlides - visibleSlides; // Loop to end
-    }
-    updateCarousel();
-    resetAutoPlay();
+// Auto-play for both
+function startAutoPlay() {
+    setInterval(() => moveCarousel('projects-track', 1), 5000); // 5 seconds
+    setInterval(() => moveCarousel('carousel-track', 1), 4000); // 4 seconds
 }
 
-function resetAutoPlay() {
-    clearInterval(autoPlayInterval);
-    autoPlayInterval = setInterval(nextSlide, 3000); // 3 seconds
-}
-
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-    if(track) {
-        resetAutoPlay();
-        
-        // Pause on hover
-        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-        track.addEventListener('mouseleave', resetAutoPlay);
-        
-        // Recalculate on resize
-        window.addEventListener('resize', updateCarousel);
-    }
-});
+document.addEventListener('DOMContentLoaded', startAutoPlay);
