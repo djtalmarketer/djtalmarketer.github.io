@@ -1,386 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio CMS - Edit Content</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background-color: #f3f4f6; color: #1f2937; }
-        .section-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .input-group { margin-bottom: 15px; }
-        label { display: block; font-size: 0.875rem; font-weight: 600; margin-bottom: 5px; color: #4b5563; }
-        input, textarea, select { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 0.9rem; }
-        input:focus, textarea:focus { outline: 2px solid #2563eb; border-color: transparent; }
-        .collapsed { display: none; }
-        .toggler { cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .sub-item { border-left: 3px solid #e5e7eb; padding-left: 15px; margin-top: 15px; }
-    </style>
-</head>
-<body class="p-6 max-w-5xl mx-auto">
-
-    <div class="flex justify-between items-center mb-8">
-        <div>
-            <h1 class="text-3xl font-bold text-gray-900">Portfolio Content Manager</h1>
-            <p class="text-gray-600">Edit fields below and generate your new index.html code.</p>
-        </div>
-        <button onclick="generateCode()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded shadow transition">
-            <i class="fas fa-code mr-2"></i> Generate HTML
-        </button>
-    </div>
-
-    <!-- HERO SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('hero-section')">
-            <h2 class="text-xl font-bold text-blue-800">1. Hero & Personal Info</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="hero-section" class="mt-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="input-group">
-                    <label>Full Name (Nav & Hero)</label>
-                    <input type="text" id="heroName" value="Dennis Joseph">
-                </div>
-                <div class="input-group">
-                    <label>Profile Image Filename</label>
-                    <input type="text" id="profileImg" value="profile.jpeg">
-                </div>
-                <div class="input-group">
-                    <label>Main Title (Line 1)</label>
-                    <input type="text" id="heroTitle1" value="Head of Marketing and">
-                </div>
-                <div class="input-group">
-                    <label>Main Title (Highlighted Line 2)</label>
-                    <input type="text" id="heroTitle2" value="Digital Transformation">
-                </div>
-            </div>
-            <div class="input-group">
-                <label>Bio Description</label>
-                <textarea id="heroDesc" rows="2">Senior Digital Head | 8 Years Performance Marketing Real Estate | Meta Partner ® | Google Ads PPC Expert | SEO | Media Buyer | Lead Generation | AI & Digital Transformation</textarea>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="input-group">
-                    <label>Email Address</label>
-                    <input type="text" id="email" value="dennisjoseph.bugos.os@gmail.com">
-                </div>
-                <div class="input-group">
-                    <label>CV Filename</label>
-                    <input type="text" id="cvLink" value="DENNIS-CV-2025.pdf">
-                </div>
-                <div class="input-group">
-                    <label>Portfolio Filename</label>
-                    <input type="text" id="portLink" value="Dennis-Portfolio.pdf">
-                </div>
-            </div>
-            <!-- Socials -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-                <div class="input-group"><label>Facebook URL</label><input type="text" id="soc_fb" value="https://www.facebook.com/iamdennisjoseph/"></div>
-                <div class="input-group"><label>Instagram URL</label><input type="text" id="soc_ig" value="https://www.instagram.com/iamdennisjoseph/"></div>
-                <div class="input-group"><label>LinkedIn URL</label><input type="text" id="soc_li" value="https://www.linkedin.com/in/iamdennisjoseph/"></div>
-                <div class="input-group"><label>X (Twitter) URL</label><input type="text" id="soc_tw" value="https://www.twitter.com/iamdennisjoseph/"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EXPERIENCE SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('exp-section')">
-            <h2 class="text-xl font-bold text-blue-800">2. Experience Timeline</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="exp-section" class="mt-4 collapsed">
-            <!-- Job 1 -->
-            <div class="sub-item">
-                <h3 class="font-bold text-gray-500 mb-2">Job 1 (Most Recent)</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="input-group"><label>Role</label><input type="text" id="job1_role" value="Senior Digital Marketing Manager"></div>
-                    <div class="input-group"><label>Company</label><input type="text" id="job1_comp" value="K Estates — Dubai, UAE"></div>
-                    <div class="input-group"><label>Date Range</label><input type="text" id="job1_date" value="Dec 2024 - Present"></div>
-                    <div class="input-group"><label>Logo Filename</label><input type="text" id="job1_logo" value="k-estates-logo.png"></div>
-                </div>
-                <div class="input-group"><label>Description (HTML allowed for bullets)</label>
-                    <textarea id="job1_desc" rows="3">&lt;li&gt;Manage the entire marketing team and daily operations.&lt;/li&gt;
-&lt;li&gt;Execute and manage all digital marketing campaigns (WhatsApp, Email, Paid Ads).&lt;/li&gt;
-&lt;li&gt;Handle CRM, lead follow-ups, and sales re-assignment.&lt;/li&gt;</textarea>
-                </div>
-            </div>
-            <!-- Job 2 -->
-            <div class="sub-item">
-                <h3 class="font-bold text-gray-500 mb-2">Job 2</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="input-group"><label>Role</label><input type="text" id="job2_role" value="Senior Performance Marketing Executive"></div>
-                    <div class="input-group"><label>Company</label><input type="text" id="job2_comp" value="Betterhomes LLC"></div>
-                    <div class="input-group"><label>Date Range</label><input type="text" id="job2_date" value="Jan 2023 - Dec 2024"></div>
-                    <div class="input-group"><label>Logo Filename</label><input type="text" id="job2_logo" value="betterhomes-logo.png"></div>
-                </div>
-                <div class="input-group"><label>Description</label>
-                    <textarea id="job2_desc" rows="2">&lt;li&gt;Generated +10k leads annually, achieved x2 ROAS with 5x ROI.&lt;/li&gt;
-&lt;li&gt;Managed budgets to ensure optimal return on investment (ROI).&lt;/li&gt;</textarea>
-                </div>
-            </div>
-             <!-- Job 3 -->
-             <div class="sub-item">
-                <h3 class="font-bold text-gray-500 mb-2">Job 3</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="input-group"><label>Role</label><input type="text" id="job3_role" value="Digital Marketing Lead"></div>
-                    <div class="input-group"><label>Company</label><input type="text" id="job3_comp" value="Espace Real Estate"></div>
-                    <div class="input-group"><label>Date Range</label><input type="text" id="job3_date" value="Jan 2021 - Dec 2023"></div>
-                    <div class="input-group"><label>Logo Filename</label><input type="text" id="job3_logo" value="espace-logo.png"></div>
-                </div>
-                <div class="input-group"><label>Description</label>
-                    <textarea id="job3_desc" rows="2">&lt;li&gt;Spearheaded the Digital Team working closely with Sales Directors.&lt;/li&gt;
-&lt;li&gt;Executed campaigns across Facebook, Google Ads, Snapchat & LinkedIn.&lt;/li&gt;</textarea>
-                </div>
-            </div>
-             <!-- Job 4 -->
-             <div class="sub-item">
-                <h3 class="font-bold text-gray-500 mb-2">Job 4</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <div class="input-group"><label>Role</label><input type="text" id="job4_role" value="Digital Marketing Executive"></div>
-                    <div class="input-group"><label>Company</label><input type="text" id="job4_comp" value="Unique Properties"></div>
-                    <div class="input-group"><label>Date Range</label><input type="text" id="job4_date" value="Apr 2019 - Dec 2021"></div>
-                    <div class="input-group"><label>Logo Filename</label><input type="text" id="job4_logo" value="unique-properties-logo.png"></div>
-                </div>
-                <div class="input-group"><label>Description</label>
-                    <textarea id="job4_desc" rows="2">&lt;li&gt;Managed daily growth and development of assigned social campaigns.&lt;/li&gt;
-&lt;li&gt;Oversaw all company social media accounts.&lt;/li&gt;</textarea>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- TESTIMONIALS SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('test-section')">
-            <h2 class="text-xl font-bold text-blue-800">3. Testimonials</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="test-section" class="mt-4 collapsed">
-            <div id="testimonial-container">
-                <!-- Testimonial 1 -->
-                <div class="sub-item">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="input-group"><label>Name</label><input type="text" id="t1_name" value="Mary-Ann Soliguen"></div>
-                        <div class="input-group"><label>Role</label><input type="text" id="t1_role" value="Corp. Secretary, Rizal Modern"></div>
-                        <div class="input-group"><label>Image URL</label><input type="text" id="t1_img" value="https://randomuser.me/api/portraits/women/44.jpg"></div>
-                    </div>
-                    <div class="input-group"><label>Quote</label><textarea id="t1_quote" rows="2">"We are Satisfied with your work. You were very reachable, and you really customized our website in accordance with our preferences. Thank you! Keep it going."</textarea></div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="sub-item">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="input-group"><label>Name</label><input type="text" id="t2_name" value="Wis Garcia"></div>
-                        <div class="input-group"><label>Role</label><input type="text" id="t2_role" value="Digital Specialist, fäm Properties"></div>
-                        <div class="input-group"><label>Image URL</label><input type="text" id="t2_img" value="https://randomuser.me/api/portraits/women/65.jpg"></div>
-                    </div>
-                    <div class="input-group"><label>Quote</label><textarea id="t2_quote" rows="2">"An incredible asset to our team! His positive attitude and dedication made a real difference. I truly appreciated his support and innovative ideas!"</textarea></div>
-                </div>
-                <!-- Testimonial 3 -->
-                <div class="sub-item">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="input-group"><label>Name</label><input type="text" id="t3_name" value="Gelan Dale Tan"></div>
-                        <div class="input-group"><label>Role</label><input type="text" id="t3_role" value="Performance Exec, fäm Properties"></div>
-                        <div class="input-group"><label>Image URL</label><input type="text" id="t3_img" value="https://randomuser.me/api/portraits/men/32.jpg"></div>
-                    </div>
-                    <div class="input-group"><label>Quote</label><textarea id="t3_quote" rows="2">"Working with Dennis is a fantastic experience. He is a true team player, always willing to help out and collaborate effectively."</textarea></div>
-                </div>
-                 <!-- Testimonial 4 -->
-                 <div class="sub-item">
-                    <div class="grid grid-cols-3 gap-2">
-                        <div class="input-group"><label>Name</label><input type="text" id="t4_name" value="Kirt Brian Reguyal"></div>
-                        <div class="input-group"><label>Role</label><input type="text" id="t4_role" value="Software Engineer, Armada"></div>
-                        <div class="input-group"><label>Image URL</label><input type="text" id="t4_img" value="https://randomuser.me/api/portraits/men/86.jpg"></div>
-                    </div>
-                    <div class="input-group"><label>Quote</label><textarea id="t4_quote" rows="2">"I've been consistently impressed with his problem-solving abilities and attention to detail. He consistently goes above and beyond in his work."</textarea></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WORK/PROJECTS SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('work-section')">
-            <h2 class="text-xl font-bold text-blue-800">4. Selected Projects</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="work-section" class="mt-4 collapsed">
-            <!-- Project 1 -->
-            <div class="sub-item">
-                <h4 class="font-bold">Project 1</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div class="input-group"><label>Title</label><input type="text" id="p1_title" value="Espace Twin Towers"></div>
-                    <div class="input-group"><label>Image File</label><input type="text" id="p1_img" value="project1.jpg"></div>
-                    <div class="input-group"><label>Tag (e.g. Meta)</label><input type="text" id="p1_tag" value="Meta Ads"></div>
-                    <div class="input-group"><label>Description</label><input type="text" id="p1_desc" value="Lead Generation & Branding Campaign achieving 200% ROI."></div>
-                </div>
-            </div>
-             <!-- Project 2 -->
-             <div class="sub-item">
-                <h4 class="font-bold">Project 2</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div class="input-group"><label>Title</label><input type="text" id="p2_title" value="Sobha One Launch"></div>
-                    <div class="input-group"><label>Image File</label><input type="text" id="p2_img" value="project2.jpg"></div>
-                    <div class="input-group"><label>Tag</label><input type="text" id="p2_tag" value="Content"></div>
-                    <div class="input-group"><label>Description</label><input type="text" id="p2_desc" value="Video marketing campaign and luxury lead nurturing."></div>
-                </div>
-            </div>
-             <!-- Project 3 -->
-             <div class="sub-item">
-                <h4 class="font-bold">Project 3</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div class="input-group"><label>Title</label><input type="text" id="p3_title" value="Lanai Islands"></div>
-                    <div class="input-group"><label>Image File</label><input type="text" id="p3_img" value="project3.jpg"></div>
-                    <div class="input-group"><label>Tag</label><input type="text" id="p3_tag" value="Automation"></div>
-                    <div class="input-group"><label>Description</label><input type="text" id="p3_desc" value="Ultra-luxury sales campaign for high-net-worth leads."></div>
-                </div>
-            </div>
-            <!-- Project 4 -->
-            <div class="sub-item">
-                <h4 class="font-bold">Project 4</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div class="input-group"><label>Title</label><input type="text" id="p4_title" value="Digital Strategy X"></div>
-                    <div class="input-group"><label>Image File</label><input type="text" id="p4_img" value="project4.jpg"></div>
-                    <div class="input-group"><label>Tag</label><input type="text" id="p4_tag" value="SEO/SEM"></div>
-                    <div class="input-group"><label>Description</label><input type="text" id="p4_desc" value="Comprehensive SEO and SEM overhaul for real estate."></div>
-                </div>
-            </div>
-            <!-- Project 5 -->
-            <div class="sub-item">
-                <h4 class="font-bold">Project 5</h4>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-                    <div class="input-group"><label>Title</label><input type="text" id="p5_title" value="Luxury Branding"></div>
-                    <div class="input-group"><label>Image File</label><input type="text" id="p5_img" value="project5.jpg"></div>
-                    <div class="input-group"><label>Tag</label><input type="text" id="p5_tag" value="Design"></div>
-                    <div class="input-group"><label>Description</label><input type="text" id="p5_desc" value="Creative direction and visual identity development."></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- EVENTS SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('event-section')">
-            <h2 class="text-xl font-bold text-blue-800">5. Events & Organizations</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="event-section" class="mt-4 collapsed">
-            <!-- Event 1 -->
-            <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e1_name" value="AI Advance Summit"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e1_img" value="event1.jpg"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e1_tag" value="Google AI"></div>
-            </div>
-             <!-- Event 2 -->
-             <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e2_name" value="Google Developers Group"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e2_img" value="event2.jpg"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e2_tag" value="Community"></div>
-            </div>
-             <!-- Event 3 -->
-             <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e3_name" value="Meta Partner Event"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e3_img" value="event3.jpg"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e3_tag" value="Meta"></div>
-            </div>
-            <!-- Event 4 -->
-            <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e4_name" value="Instagram Activation"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e4_img" value="event4.jpg"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e4_tag" value="Instagram"></div>
-            </div>
-            <!-- Event 5 -->
-            <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e5_name" value="Marketeers Summit"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e5_img" value="event5.png"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e5_tag" value="Summit"></div>
-            </div>
-             <!-- Event 6 -->
-             <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e6_name" value="Tech Leadership"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e6_img" value="event6.jpg"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e6_tag" value="Tech"></div>
-            </div>
-             <!-- Event 7 -->
-             <div class="sub-item grid grid-cols-3 gap-2">
-                <div class="input-group"><label>Event Name</label><input type="text" id="e7_name" value="Industry Recognition"></div>
-                <div class="input-group"><label>Image</label><input type="text" id="e7_img" value="event7.png"></div>
-                <div class="input-group"><label>Tag</label><input type="text" id="e7_tag" value="Awards"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FAQ SECTION -->
-    <div class="section-card">
-        <div class="toggler" onclick="toggleSection('faq-section')">
-            <h2 class="text-xl font-bold text-blue-800">6. FAQ</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="faq-section" class="mt-4 collapsed">
-            <!-- FAQ 1 -->
-            <div class="sub-item">
-                <div class="input-group"><label>Question 1</label><input type="text" id="q1" value="What services do you offer?"></div>
-                <div class="input-group"><label>Answer 1</label><textarea id="a1" rows="2">I offer comprehensive digital marketing services including Performance Marketing, SEO, PPC (Google/Meta), Lead Generation, and CRM implementation.</textarea></div>
-            </div>
-            <!-- FAQ 2 -->
-            <div class="sub-item">
-                <div class="input-group"><label>Question 2</label><input type="text" id="q2" value="What is your typical process for a project?"></div>
-                <div class="input-group"><label>Answer 2</label><textarea id="a2" rows="2">I start with a deep audit of current assets, define KPIs, strategize the campaign structure, execute across channels, and continuously optimize based on data.</textarea></div>
-            </div>
-            <!-- FAQ 3 -->
-            <div class="sub-item">
-                <div class="input-group"><label>Question 3</label><input type="text" id="q3" value="What is your availability?"></div>
-                <div class="input-group"><label>Answer 3</label><textarea id="a3" rows="2">I am currently open to full-time opportunities or high-impact consulting projects.</textarea></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- FOOTER -->
-    <div class="section-card">
-         <div class="toggler" onclick="toggleSection('footer-section')">
-            <h2 class="text-xl font-bold text-blue-800">7. Footer & Extras</h2>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-        <div id="footer-section" class="mt-4 collapsed">
-            <div class="input-group"><label>Copyright Text</label><input type="text" id="copyright" value="Copyright © 2026 Dennis Joseph. All Rights Reserved."></div>
-            <div class="input-group"><label>WhatsApp Number (format: 971...)</label><input type="text" id="whatsapp" value="971545271080"></div>
-        </div>
-    </div>
-
-    <!-- OUTPUT -->
-    <div class="section-card border-2 border-blue-500">
-        <h2 class="text-xl font-bold mb-4">Generated HTML Code</h2>
-        <p class="mb-2 text-sm">Click the button, then copy everything in this box and paste it into <strong>index.html</strong>.</p>
-        <textarea id="outputCode" rows="10" class="font-mono text-xs bg-gray-900 text-green-400 p-4 rounded"></textarea>
-        <div class="mt-4 text-right">
-             <button onclick="copyToClipboard()" class="bg-gray-700 hover:bg-gray-800 text-white py-2 px-4 rounded">Copy to Clipboard</button>
-        </div>
-    </div>
-
-<script>
-    function toggleSection(id) {
-        document.getElementById(id).classList.toggle('collapsed');
-    }
-
-    function val(id) {
-        return document.getElementById(id).value;
-    }
-
-    function generateCode() {
-        // Constructing the HTML structure
-        const html = `<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${val('heroName')} | ${val('heroTitle1')} ${val('heroTitle2')}</title>
-    <meta name="description" content="Portfolio of ${val('heroName')} - Senior Digital Head & Performance Marketing Expert">
+    <title>Dennis Joseph | Head of Marketing and Digital Transformation</title>
+    <meta name="description" content="Portfolio of Dennis Joseph">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"><\/script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-brand-dark text-white antialiased overflow-x-hidden">
@@ -389,7 +19,7 @@
     <nav class="fixed w-full z-50 top-0 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0 font-bold text-xl tracking-wider uppercase">${val('heroName')}</div>
+                <div class="flex-shrink-0 font-bold text-xl tracking-wider uppercase">Dennis Joseph</div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#experience" class="hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium transition">Experience</a>
@@ -400,7 +30,7 @@
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <a href="mailto:${val('email')}" class="border border-white/20 hover:bg-white hover:text-black px-4 py-2 rounded-full text-sm transition duration-300">Get in touch</a>
+                    <a href="mailto:dennisjoseph.bugos.os@gmail.com" class="border border-white/20 hover:bg-white hover:text-black px-4 py-2 rounded-full text-sm transition duration-300">Get in touch</a>
                 </div>
                 <div class="-mr-2 flex md:hidden">
                     <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"><i class="fas fa-bars"></i></button>
@@ -424,89 +54,55 @@
             <div class="w-full h-full bg-gradient-to-b from-gray-800 via-transparent to-transparent blur-3xl rounded-full"></div>
         </div>
         <div class="relative w-32 h-32 md:w-40 md:h-40 mb-8 rounded-full p-1 border border-white/20" data-aos="zoom-in">
-            <img src="${val('profileImg')}" alt="${val('heroName')}" class="w-full h-full rounded-full object-cover">
+            <img src="profile.jpeg" alt="Dennis Joseph" class="w-full h-full rounded-full object-cover">
             <div class="absolute bottom-0 right-0 bg-white text-black text-xs font-bold px-2 py-1 rounded-full border-2 border-brand-dark">Verified User</div>
         </div>
         <h1 class="text-4xl md:text-6xl font-bold mb-4 tracking-tight" data-aos="fade-up" data-aos-delay="100">
-            ${val('heroTitle1')}<br/>
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">${val('heroTitle2')}</span>
+            Head of Marketing and<br/>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500">Digital Transformation</span>
         </h1>
         <div class="h-16 flex items-center justify-center mb-6" data-aos="fade-up" data-aos-delay="200">
             <span id="typed-text" class="text-xl md:text-2xl text-brand-gray font-light"></span>
         </div>
         <p class="max-w-2xl mx-auto text-brand-gray mb-10 text-sm md:text-base px-4" data-aos="fade-up" data-aos-delay="300">
-            ${val('heroDesc')}
+            Senior Digital Head | 8 Years Performance Marketing Real Estate | Meta Partner ® | Google Ads PPC Expert
         </p>
         <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-            <a href="mailto:${val('email')}" class="px-8 py-3 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition">Hire Me</a>
-            <a href="${val('cvLink')}" class="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition">Download CV</a>
-            <a href="${val('portLink')}" class="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition">Download Portfolio</a>
+            <a href="mailto:dennisjoseph.bugos.os@gmail.com" class="px-8 py-3 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition">Hire Me</a>
+            <a href="DENNIS-CV-2025.pdf" class="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition">Download CV</a>
+            <a href="Dennis-Portfolio.pdf" class="px-8 py-3 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 transition">Download Portfolio</a>
         </div>
         <div class="mt-12 flex space-x-6 text-2xl text-brand-gray" data-aos="fade-in" data-aos-delay="500">
-            <a href="${val('soc_fb')}" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-facebook"></i></a>
-            <a href="${val('soc_ig')}" target="_blank" class="hover:text-pink-500 transition"><i class="fab fa-instagram"></i></a>
-            <a href="${val('soc_li')}" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
-            <a href="${val('soc_tw')}" target="_blank" class="hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+            
+            <a href="https://www.facebook.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+            
+            <a href="https://www.instagram.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            
+            <a href="https://www.linkedin.com/in/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+            
+            <a href="https://www.twitter.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+            
         </div>
     </section>
 
-    <!-- SKILLS (Static Layout, editable in code if needed, kept concise here) -->
+    <!-- SKILLS (Simplified / Static for now as not requested dynamic, but editable in code) -->
     <section class="py-20 border-y border-white/5 bg-brand-dark/50">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="mb-20">
+             <div class="mb-20">
                 <h3 class="text-xs font-semibold text-brand-gray uppercase tracking-[0.3em] mb-12 text-center" data-aos="fade-up">Paid Media Expertise</h3>
                 <div class="flex flex-wrap justify-center gap-x-12 gap-y-10">
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fab fa-google text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Google Ads</span>
-                    </div>
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fab fa-meta text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Meta</span>
-                    </div>
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-chart-line text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Semrush</span>
-                    </div>
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="400">
-                        <i class="fas fa-rocket text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Unbounce</span>
-                    </div>
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="500">
-                        <i class="fab fa-salesforce text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Salesforce</span>
-                    </div>
-                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="600">
-                        <i class="fas fa-chart-pie text-4xl text-brand-gray group-hover:text-white transition-all mb-3"></i>
-                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray group-hover:text-white">Analytics</span>
-                    </div>
+                    <div class="flex flex-col items-center group w-24" data-aos="fade-up"><i class="fab fa-google text-4xl text-brand-gray mb-3"></i><span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray">Google Ads</span></div>
+                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="100"><i class="fab fa-meta text-4xl text-brand-gray mb-3"></i><span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray">Meta</span></div>
+                    <div class="flex flex-col items-center group w-24" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-chart-line text-4xl text-brand-gray mb-3"></i><span class="text-[10px] font-bold uppercase tracking-widest text-brand-gray">Semrush</span></div>
                 </div>
             </div>
             <!-- Design Skills -->
             <div class="pt-10 border-t border-white/5">
                 <h3 class="text-xs font-semibold text-brand-gray uppercase tracking-[0.3em] mb-10 text-center" data-aos="fade-up">Design & Creativity</h3>
                 <div class="flex flex-wrap justify-center gap-3">
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="100">
-                        <i class="fas fa-palette text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Photoshop</span>
-                    </div>
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="150">
-                        <i class="fas fa-bezier-curve text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Illustrator</span>
-                    </div>
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="200">
-                        <i class="fas fa-scissors text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Capcut</span>
-                    </div>
-                     <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="250">
-                        <i class="fas fa-paint-brush text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Canva</span>
-                    </div>
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="300">
-                        <i class="fas fa-compact-disc text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">DaVinci</span>
-                    </div>
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="350">
-                        <i class="fas fa-pen-nib text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Indesign</span>
-                    </div>
-                    <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/20 transition-all" data-aos="zoom-in" data-aos-delay="400">
-                        <i class="fas fa-video text-sm text-brand-gray group-hover:text-white"></i><span class="text-xs font-medium text-gray-400 group-hover:text-white">Premiere Pro</span>
-                    </div>
+                   <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10" data-aos="zoom-in"><i class="fas fa-palette text-sm text-brand-gray"></i><span class="text-xs font-medium text-gray-400">Photoshop</span></div>
+                   <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10" data-aos="zoom-in" data-aos-delay="100"><i class="fas fa-video text-sm text-brand-gray"></i><span class="text-xs font-medium text-gray-400">Premiere Pro</span></div>
+                   <div class="group flex items-center gap-3 px-4 py-2 bg-white/5 rounded-full border border-white/10" data-aos="zoom-in" data-aos-delay="200"><i class="fas fa-paint-brush text-sm text-brand-gray"></i><span class="text-xs font-medium text-gray-400">Canva</span></div>
                 </div>
             </div>
         </div>
@@ -521,70 +117,36 @@
                 <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-white ring-4 ring-brand-dark"></span>
                 <div class="flex justify-between items-start mb-2">
                     <div>
-                        <h3 class="text-xl font-bold text-white">${val('job1_role')}</h3>
-                        <div class="text-brand-gray italic">${val('job1_comp')}</div>
+                        <h3 class="text-xl font-bold text-white">Senior Digital Marketing Manager</h3>
+                        <div class="text-brand-gray italic">K Estates — Dubai, UAE</div>
                     </div>
                     <div class="text-right flex flex-col items-end">
-                        <span class="text-sm text-brand-gray mb-1">${val('job1_date')}</span>
-                        <img src="${val('job1_logo')}" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
+                        <span class="text-sm text-brand-gray mb-1">Dec 2024 - Present</span>
+                        <img src="k-estates-logo.png" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
                     </div>
                 </div>
                 <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                    ${val('job1_desc')}
+                    <li>Manage the entire marketing team and daily operations.</li>
                 </ul>
             </div>
-
+            
             <div class="relative pl-8 md:pl-12" data-aos="fade-up">
                 <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-600 ring-4 ring-brand-dark"></span>
                 <div class="flex justify-between items-start mb-2">
                     <div>
-                        <h3 class="text-xl font-bold text-white">${val('job2_role')}</h3>
-                        <div class="text-brand-gray italic">${val('job2_comp')}</div>
+                        <h3 class="text-xl font-bold text-white">Senior Performance Marketing Executive</h3>
+                        <div class="text-brand-gray italic">Betterhomes LLC</div>
                     </div>
                     <div class="text-right flex flex-col items-end">
-                        <span class="text-sm text-brand-gray mb-1">${val('job2_date')}</span>
-                        <img src="${val('job2_logo')}" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
+                        <span class="text-sm text-brand-gray mb-1">Jan 2023 - Dec 2024</span>
+                        <img src="betterhomes-logo.png" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
                     </div>
                 </div>
                 <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                    ${val('job2_desc')}
+                    <li>Generated +10k leads annually.</li>
                 </ul>
             </div>
-
-             <div class="relative pl-8 md:pl-12" data-aos="fade-up">
-                <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-600 ring-4 ring-brand-dark"></span>
-                <div class="flex justify-between items-start mb-2">
-                    <div>
-                        <h3 class="text-xl font-bold text-white">${val('job3_role')}</h3>
-                        <div class="text-brand-gray italic">${val('job3_comp')}</div>
-                    </div>
-                    <div class="text-right flex flex-col items-end">
-                        <span class="text-sm text-brand-gray mb-1">${val('job3_date')}</span>
-                        <img src="${val('job3_logo')}" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
-                    </div>
-                </div>
-                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                    ${val('job3_desc')}
-                </ul>
-            </div>
-
-             <div class="relative pl-8 md:pl-12" data-aos="fade-up">
-                <span class="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-gray-600 ring-4 ring-brand-dark"></span>
-                <div class="flex justify-between items-start mb-2">
-                    <div>
-                        <h3 class="text-xl font-bold text-white">${val('job4_role')}</h3>
-                        <div class="text-brand-gray italic">${val('job4_comp')}</div>
-                    </div>
-                    <div class="text-right flex flex-col items-end">
-                        <span class="text-sm text-brand-gray mb-1">${val('job4_date')}</span>
-                        <img src="${val('job4_logo')}" alt="Logo" class="h-8 md:h-10 w-auto bg-white/10 rounded p-1">
-                    </div>
-                </div>
-                <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                    ${val('job4_desc')}
-                </ul>
-            </div>
-
+            
         </div>
     </section>
 
@@ -593,74 +155,24 @@
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-4xl font-bold mb-16 text-white" data-aos="fade-right">Testimonials</h2>
             <div class="flex flex-col">
-                <!-- T1 -->
+                
                 <div class="flex flex-col md:flex-row md:items-start gap-8 py-12 border-t border-white/10 group hover:bg-white/5 transition duration-500 rounded-xl px-4" data-aos="fade-up">
                     <div class="md:w-1/3 flex items-center gap-4">
                         <div class="w-14 h-14 rounded-full overflow-hidden border border-white/20 grayscale group-hover:grayscale-0 transition duration-500">
-                            <img src="${val('t1_img')}" alt="${val('t1_name')}" class="w-full h-full object-cover">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mary-Ann Soliguen" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-white group-hover:text-blue-400 transition">${val('t1_name')}</h4>
-                            <p class="text-xs text-brand-gray uppercase tracking-wider mt-1">${val('t1_role')}</p>
+                            <h4 class="text-lg font-semibold text-white group-hover:text-blue-400 transition">Mary-Ann Soliguen</h4>
+                            <p class="text-xs text-brand-gray uppercase tracking-wider mt-1">Corp. Secretary</p>
                         </div>
                     </div>
                     <div class="md:w-2/3">
                         <p class="text-gray-400 leading-relaxed text-lg font-light group-hover:text-gray-200 transition">
-                            ${val('t1_quote')}
+                            "We are Satisfied with your work."
                         </p>
                     </div>
                 </div>
-                 <!-- T2 -->
-                <div class="flex flex-col md:flex-row md:items-start gap-8 py-12 border-t border-white/10 group hover:bg-white/5 transition duration-500 rounded-xl px-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="md:w-1/3 flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full overflow-hidden border border-white/20 grayscale group-hover:grayscale-0 transition duration-500">
-                            <img src="${val('t2_img')}" alt="${val('t2_name')}" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-white group-hover:text-blue-400 transition">${val('t2_name')}</h4>
-                            <p class="text-xs text-brand-gray uppercase tracking-wider mt-1">${val('t2_role')}</p>
-                        </div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-400 leading-relaxed text-lg font-light group-hover:text-gray-200 transition">
-                            ${val('t2_quote')}
-                        </p>
-                    </div>
-                </div>
-                 <!-- T3 -->
-                <div class="flex flex-col md:flex-row md:items-start gap-8 py-12 border-t border-white/10 group hover:bg-white/5 transition duration-500 rounded-xl px-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="md:w-1/3 flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full overflow-hidden border border-white/20 grayscale group-hover:grayscale-0 transition duration-500">
-                            <img src="${val('t3_img')}" alt="${val('t3_name')}" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-white group-hover:text-blue-400 transition">${val('t3_name')}</h4>
-                            <p class="text-xs text-brand-gray uppercase tracking-wider mt-1">${val('t3_role')}</p>
-                        </div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-400 leading-relaxed text-lg font-light group-hover:text-gray-200 transition">
-                            ${val('t3_quote')}
-                        </p>
-                    </div>
-                </div>
-                 <!-- T4 -->
-                <div class="flex flex-col md:flex-row md:items-start gap-8 py-12 border-t border-b border-white/10 group hover:bg-white/5 transition duration-500 rounded-xl px-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="md:w-1/3 flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full overflow-hidden border border-white/20 grayscale group-hover:grayscale-0 transition duration-500">
-                            <img src="${val('t4_img')}" alt="${val('t4_name')}" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="text-lg font-semibold text-white group-hover:text-blue-400 transition">${val('t4_name')}</h4>
-                            <p class="text-xs text-brand-gray uppercase tracking-wider mt-1">${val('t4_role')}</p>
-                        </div>
-                    </div>
-                    <div class="md:w-2/3">
-                        <p class="text-gray-400 leading-relaxed text-lg font-light group-hover:text-gray-200 transition">
-                            ${val('t4_quote')}
-                        </p>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
@@ -680,64 +192,20 @@
 
         <div class="relative">
             <div id="projects-track" class="flex transition-transform duration-500 ease-out gap-6">
-                <!-- P1 -->
+                
                 <div class="min-w-[100%] md:min-w-[32%] group relative overflow-hidden rounded-xl bg-brand-card border border-white/5">
                     <div class="h-96 overflow-hidden">
-                        <img src="${val('p1_img')}" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
+                        <img src="project1.jpg" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${val('p1_title')}</h3>
-                        <p class="text-gray-400 text-sm mb-4">${val('p1_desc')}</p>
-                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">${val('p1_tag')}</span>
+                        <h3 class="text-xl font-bold mb-2">Espace Twin Towers</h3>
+                        <p class="text-gray-400 text-sm mb-4">Lead Generation & Branding Campaign.</p>
+                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">Meta Ads</span>
                     </div>
                 </div>
-                <!-- P2 -->
-                <div class="min-w-[100%] md:min-w-[32%] group relative overflow-hidden rounded-xl bg-brand-card border border-white/5">
-                    <div class="h-96 overflow-hidden">
-                        <img src="${val('p2_img')}" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${val('p2_title')}</h3>
-                        <p class="text-gray-400 text-sm mb-4">${val('p2_desc')}</p>
-                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">${val('p2_tag')}</span>
-                    </div>
-                </div>
-                <!-- P3 -->
-                <div class="min-w-[100%] md:min-w-[32%] group relative overflow-hidden rounded-xl bg-brand-card border border-white/5">
-                    <div class="h-96 overflow-hidden">
-                        <img src="${val('p3_img')}" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${val('p3_title')}</h3>
-                        <p class="text-gray-400 text-sm mb-4">${val('p3_desc')}</p>
-                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">${val('p3_tag')}</span>
-                    </div>
-                </div>
-                <!-- P4 -->
-                <div class="min-w-[100%] md:min-w-[32%] group relative overflow-hidden rounded-xl bg-brand-card border border-white/5">
-                    <div class="h-96 overflow-hidden">
-                        <img src="${val('p4_img')}" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${val('p4_title')}</h3>
-                        <p class="text-gray-400 text-sm mb-4">${val('p4_desc')}</p>
-                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">${val('p4_tag')}</span>
-                    </div>
-                </div>
-                <!-- P5 -->
-                <div class="min-w-[100%] md:min-w-[32%] group relative overflow-hidden rounded-xl bg-brand-card border border-white/5">
-                    <div class="h-96 overflow-hidden">
-                        <img src="${val('p5_img')}" class="w-full h-full object-cover object-top transition duration-700 group-hover:scale-110 opacity-80" alt="Project">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">${val('p5_title')}</h3>
-                        <p class="text-gray-400 text-sm mb-4">${val('p5_desc')}</p>
-                        <span class="text-[10px] font-bold px-2 py-1 bg-white/10 rounded text-white uppercase tracking-widest">${val('p5_tag')}</span>
-                    </div>
-                </div>
+                
             </div>
         </div>
-        
         <div class="text-center mt-12">
             <a href="https://dennisjosephbugos.tumblr.com/" target="_blank" class="inline-block px-8 py-3 border border-white/20 text-white rounded-full hover:bg-white hover:text-black transition text-sm">View More on Tumblr</a>
         </div>
@@ -748,7 +216,6 @@
     <div class="max-w-7xl mx-auto px-4">
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-12">
             <h2 class="text-3xl font-bold" data-aos="fade-right">Organizations & Events</h2>
-            <p class="text-gray-500 text-sm mt-2 md:mt-0">Core Organizer & Industry Speaker</p>
         </div>
         
         <div class="relative">
@@ -756,65 +223,18 @@
                 <div id="carousel-track" class="flex transition-transform duration-500 ease-out gap-6 items-stretch">
                     
                     <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e1_img')}" class="w-full h-52 object-cover">
+                        <img src="event1.jpg" class="w-full h-52 object-cover">
                         <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-2 py-1 rounded uppercase tracking-widest">${val('e1_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e1_name')}</h3>
+                            <span class="text-[10px] font-bold text-blue-400 bg-blue-400/10 px-2 py-1 rounded uppercase tracking-widest">Google AI</span>
+                            <h3 class="mt-3 text-lg font-bold">AI Advance Summit</h3>
                         </div>
                     </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e2_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-green-400 bg-green-400/10 px-2 py-1 rounded uppercase tracking-widest">${val('e2_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e2_name')}</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e3_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-blue-300 bg-blue-300/10 px-2 py-1 rounded uppercase tracking-widest">${val('e3_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e3_name')}</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e4_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-pink-400 bg-pink-400/10 px-2 py-1 rounded uppercase tracking-widest">${val('e4_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e4_name')}</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e5_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-yellow-400 bg-yellow-400/10 px-2 py-1 rounded uppercase tracking-widest">${val('e5_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e5_name')}</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e6_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-purple-400 bg-purple-400/10 px-2 py-1 rounded uppercase tracking-widest">${val('e6_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e6_name')}</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full md:min-w-[calc(33.333%-1rem)] bg-brand-dark rounded-xl overflow-hidden border border-white/5 flex-shrink-0 flex flex-col">
-                        <img src="${val('e7_img')}" class="w-full h-52 object-cover">
-                        <div class="p-6 flex-grow">
-                            <span class="text-[10px] font-bold text-gray-300 bg-gray-300/10 px-2 py-1 rounded uppercase tracking-widest">${val('e7_tag')}</span>
-                            <h3 class="mt-3 text-lg font-bold">${val('e7_name')}</h3>
-                        </div>
-                    </div>
-
+                    
                 </div>
             </div>
-
             <div class="flex justify-center gap-4 mt-8 md:absolute md:inset-y-0 md:w-full md:flex md:justify-between md:items-center md:pointer-events-none md:mt-0">
-                <button onclick="moveCarousel('carousel-track', -1)" class="md:pointer-events-auto bg-white text-black w-10 h-10 rounded-full shadow-lg flex items-center justify-center md:-ml-5 hover:scale-110 transition active:scale-95">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button onclick="moveCarousel('carousel-track', 1)" class="md:pointer-events-auto bg-white text-black w-10 h-10 rounded-full shadow-lg flex items-center justify-center md:-mr-5 hover:scale-110 transition active:scale-95">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
+                <button onclick="moveCarousel('carousel-track', -1)" class="md:pointer-events-auto bg-white text-black w-10 h-10 rounded-full shadow-lg flex items-center justify-center md:-ml-5 hover:scale-110 transition active:scale-95"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="moveCarousel('carousel-track', 1)" class="md:pointer-events-auto bg-white text-black w-10 h-10 rounded-full shadow-lg flex items-center justify-center md:-mr-5 hover:scale-110 transition active:scale-95"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </div>
@@ -824,63 +244,40 @@
     <section id="faq" class="py-20 max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-bold mb-12" data-aos="fade-right">FAQ</h2>
         <div class="space-y-4">
+            
             <div class="border-b border-white/10 pb-4" data-aos="fade-up">
-                <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-left py-2 hover:text-white transition focus:outline-none">
-                    <span class="font-medium text-lg">${val('q1')}</span>
-                    <i class="fas fa-plus text-sm text-gray-500" id="icon-1"></i>
+                <button onclick="toggleFaq(0)" class="w-full flex justify-between items-center text-left py-2 hover:text-white transition focus:outline-none">
+                    <span class="font-medium text-lg">What services do you offer?</span>
+                    <i class="fas fa-plus text-sm text-gray-500" id="icon-0"></i>
                 </button>
-                <div id="faq-1" class="hidden text-gray-400 mt-2 text-sm leading-relaxed">${val('a1')}</div>
+                <div id="faq-0" class="hidden text-gray-400 mt-2 text-sm leading-relaxed">PPC, SEO, and Digital Strategy.</div>
             </div>
-            <div class="border-b border-white/10 pb-4" data-aos="fade-up" data-aos-delay="100">
-                <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-left py-2 hover:text-white transition focus:outline-none">
-                    <span class="font-medium text-lg">${val('q2')}</span>
-                    <i class="fas fa-plus text-sm text-gray-500" id="icon-2"></i>
-                </button>
-                <div id="faq-2" class="hidden text-gray-400 mt-2 text-sm leading-relaxed">${val('a2')}</div>
-            </div>
-             <div class="border-b border-white/10 pb-4" data-aos="fade-up" data-aos-delay="200">
-                <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center text-left py-2 hover:text-white transition focus:outline-none">
-                    <span class="font-medium text-lg">${val('q3')}</span>
-                    <i class="fas fa-plus text-sm text-gray-500" id="icon-3"></i>
-                </button>
-                <div id="faq-3" class="hidden text-gray-400 mt-2 text-sm leading-relaxed">${val('a3')}</div>
-            </div>
+            
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="py-10 border-t border-white/10 text-center">
         <div class="flex justify-center space-x-6 mb-6 text-xl text-gray-500">
-            <a href="${val('soc_li')}" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:${val('email')}" class="hover:text-white transition"><i class="fas fa-envelope"></i></a>
-            <a href="${val('soc_ig')}" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+             
+            <a href="https://www.facebook.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-facebook"></i></a>
+            
+            <a href="https://www.instagram.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+            
+            <a href="https://www.linkedin.com/in/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+            
+            <a href="https://www.twitter.com/iamdennisjoseph/" target="_blank" class="hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+            
         </div>
-        <p class="text-sm text-gray-600">${val('copyright')}</p>
+        <p class="text-sm text-gray-600">Copyright © 2026 Dennis Joseph. All Rights Reserved.</p>
     </footer>
 
-    <!-- WHATSAPP -->
-    <a href="https://wa.me/${val('whatsapp')}" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-green rounded-full flex items-center justify-center text-white text-3xl shadow-lg hover:bg-green-600 transition z-50 animate-bounce">
+    <a href="https://wa.me/971545271080" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-brand-green rounded-full flex items-center justify-center text-white text-3xl shadow-lg hover:bg-green-600 transition z-50 animate-bounce">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"><\/script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"><\/script>
-    <script src="script.js"><\/script>
-</body>
-</html>`;
-
-        document.getElementById('outputCode').value = html;
-        alert("Code Generated! Scroll down to the black box to copy it.");
-    }
-
-    function copyToClipboard() {
-        const copyText = document.getElementById("outputCode");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        alert("Copied to clipboard! Now paste this into your index.html file.");
-    }
-</script>
-
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
