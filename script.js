@@ -96,7 +96,8 @@ function toggleFaq(id) {
 }
 
 
-// --- IMPROVED MULTI-CAROUSEL SYSTEM ---
+
+// --- PERFECT ALIGNMENT CAROUSEL SYSTEM ---
 const carouselStates = {
     'projects-track': { index: 0 },
     'carousel-track': { index: 0 }
@@ -109,35 +110,33 @@ function moveCarousel(trackId, direction) {
     const state = carouselStates[trackId];
     const slides = track.children;
     const totalSlides = slides.length;
-    
-    // Check how many slides are visible based on screen width
     const visibleSlides = window.innerWidth < 768 ? 1 : 3;
 
     // Update Index
     state.index += direction;
 
-    // Loop logic: prevent sliding into empty space
+    // Loop logic
     if (state.index > totalSlides - visibleSlides) {
         state.index = 0;
     } else if (state.index < 0) {
         state.index = totalSlides - visibleSlides;
     }
 
-    // Calculate exact width to slide
-    const gap = window.innerWidth < 768 ? 16 : 24; // Matches Tailwind gap-4 vs gap-6
-    const slideWidth = slides[0].offsetWidth + gap;
-    
-    track.style.transform = `translateX(-${state.index * slideWidth}px)`;
+    // NEW LOGIC: Use offsetLeft for perfect alignment
+    // Yeh har slide ki exact position pick karta hai
+    const targetSlide = slides[state.index];
+    track.style.transform = `translateX(-${targetSlide.offsetLeft}px)`;
 }
 
-// Ensure carousels reset correctly if the user rotates their phone or resizes the window
+// Reset position on screen resize (mobile to desktop shift)
 window.addEventListener('resize', () => {
     moveCarousel('projects-track', 0);
     moveCarousel('carousel-track', 0);
 });
 
-// Auto-play (slower for better readability)
+// Auto-play (thora slow rakha hai taake log dekh saken)
 function startAutoPlay() {
+    // Clear any existing intervals if necessary
     setInterval(() => moveCarousel('projects-track', 1), 6000);
     setInterval(() => moveCarousel('carousel-track', 1), 5000);
 }
