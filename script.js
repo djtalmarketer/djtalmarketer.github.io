@@ -96,10 +96,10 @@ function toggleFaq(id) {
 }
 
 
-// --- MULTI-CAROUSEL SYSTEM ---
+// --- IMPROVED MULTI-CAROUSEL SYSTEM ---
 const carouselStates = {
     'projects-track': { index: 0 },
-    'carousel-track': { index: 0 } // This is your Organizations track
+    'carousel-track': { index: 0 }
 };
 
 function moveCarousel(trackId, direction) {
@@ -109,27 +109,37 @@ function moveCarousel(trackId, direction) {
     const state = carouselStates[trackId];
     const slides = track.children;
     const totalSlides = slides.length;
+    
+    // Check how many slides are visible based on screen width
     const visibleSlides = window.innerWidth < 768 ? 1 : 3;
 
     // Update Index
     state.index += direction;
 
-    // Loop logic
+    // Loop logic: prevent sliding into empty space
     if (state.index > totalSlides - visibleSlides) {
         state.index = 0;
     } else if (state.index < 0) {
         state.index = totalSlides - visibleSlides;
     }
 
-    // Apply Transformation
-    const slideWidth = slides[0].getBoundingClientRect().width + 24; // Width + Gap
+    // Calculate exact width to slide
+    const gap = window.innerWidth < 768 ? 16 : 24; // Matches Tailwind gap-4 vs gap-6
+    const slideWidth = slides[0].offsetWidth + gap;
+    
     track.style.transform = `translateX(-${state.index * slideWidth}px)`;
 }
 
-// Auto-play for both
+// Ensure carousels reset correctly if the user rotates their phone or resizes the window
+window.addEventListener('resize', () => {
+    moveCarousel('projects-track', 0);
+    moveCarousel('carousel-track', 0);
+});
+
+// Auto-play (slower for better readability)
 function startAutoPlay() {
-    setInterval(() => moveCarousel('projects-track', 1), 5000); // 5 seconds
-    setInterval(() => moveCarousel('carousel-track', 1), 4000); // 4 seconds
+    setInterval(() => moveCarousel('projects-track', 1), 6000);
+    setInterval(() => moveCarousel('carousel-track', 1), 5000);
 }
 
 document.addEventListener('DOMContentLoaded', startAutoPlay);
